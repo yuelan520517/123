@@ -1,0 +1,28 @@
+名字: 伟信
+在:
+工作流_调度:
+日程安排: 
+    # 代表国际标准时间23点0分,北京时间需要+8小时,代表北京时间上午七点运行
+    - 时间单位: '0 23 * * *'
+工作:
+#将工作流程中运行的所有作业组合在一起
+建设:
+  #定义名为建设的作业。子键将定义作业的属性
+连续运行: Ubuntu-最新版
+步伐:
+      - 使用: 动作/签出@v2
+    
+      - 名字: 设置Python 3.9
+使用: 操作/设置-python@v2
+随着:
+python版本: 3.9.1
+      - 名字: 设置时区
+奔跑: |
+CP/usr/share/zoneinfo/Asia/Shanghai/etc/local time
+      - 名字: 安装pip包
+奔跑: |
+python -m pip安装-升级pip
+pip3 install -r requirements.txt
+      - 名字: 伟信
+奔跑: |
+python3 main.py
